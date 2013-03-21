@@ -1,4 +1,4 @@
-function parse_hdf5(hdfile,name,thermal)
+function parse_H1_hdf5(hdfile,name,thermal)
 
 % read in capture cross section
 sigc = h5read(hdfile,'/MF3/MT102/P0/dil0');
