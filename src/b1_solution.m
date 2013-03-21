@@ -1,5 +1,6 @@
 % compute diffusion coefficient
-load njoy
+load '../data/e_grid.mat'
+load '../data/H1.mat'
 
 % allocate vars
 ng = 70;

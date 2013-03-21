@@ -1,6 +1,8 @@
 % compute diffusion coefficient
-load e_grid
-H1 = load('studsvik.mat');
+load '../data/e_grid'
+H1 = load('../data/H1.mat');
+O16 = load('../data/O16.mat');
+%O16 = load('studsvik.mat');
 
 % allocate vars
 ng = 70;
@@ -16,19 +18,21 @@ Q = zeros(ng,1);
 S = zeros(ng,1);
 B2 = 0.0001;
 
-% specify number densities
-NH1 = 1;
+% specify number densities 
+NH1 = 4.9457e-02;
+NO16 = NH1/2;
+NH1=0;
 
 % create macro xs
-sigt = NH1*H1.sigt;
-sigs0 = NH1*H1.sigs0;
-sigs1 = NH1*H1.sigs1;
+sigt = NH1*H1.sigt + NO16*O16.sigt;
+sigs0 = NH1*H1.sigs0 + NO16*O16.sigs0;
+sigs1 = NH1*H1.sigs1 + NO16*O16.sigs1;
 
 % estimate initial diffusion coefficients
 diff = 1./(3*sigt);
 
 % begin iteration loop
-for i = 1:100
+for i = 1:5
     
     M(:,:) = 0;
     D(:,:) = 0;
@@ -84,4 +88,4 @@ end
 
 trans = 1./(3*diff);
 rat = trans./sigt;
-semilogx(enep,rat,'.-')
+semilogx(enep,rat,'b.-')
