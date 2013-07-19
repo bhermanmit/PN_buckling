@@ -2,7 +2,6 @@
 load '../data/e_grid'
 H1 = load('../data/H1.mat');
 O16 = load('../data/O16.mat');
-%O16 = load('studsvik.mat');
 
 % allocate vars
 ng = 70;
@@ -21,7 +20,7 @@ B2 = 0.0001;
 % specify number densities 
 NH1 = 4.9457e-02;
 NO16 = NH1/2;
-NH1=0;
+NO16=0;
 
 % create macro xs
 sigt = NH1*H1.sigt + NO16*O16.sigt;
